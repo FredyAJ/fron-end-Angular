@@ -1,0 +1,28 @@
+<div class="example-button-row">
+  <button mat-raised-button color="primary">Añadir</button>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+<!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+
+<!-- Position Column -->
+<ng-container matColumnDef="Marca">
+  <th mat-header-cell *matHeaderCellDef> Marca </th>
+  <td mat-cell *matCellDef="let element"> {{element.nameBrand}} </td>
+</ng-container>
+
+
+
+<ng-container matColumnDef="Acciones">
+  <th mat-header-cell *matHeaderCellDef> Acciones </th>
+  <td mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Warn" color="warn" aria-label="Example icon-button with a heart icon">
+    <mat-icon>edit</mat-icon>
+  </button> <button mat-icon-button matTooltip="Warn" color="warn" aria-label="Example icon-button with a heart icon">
+    <mat-icon>delete</mat-icon>
+  </button></td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
