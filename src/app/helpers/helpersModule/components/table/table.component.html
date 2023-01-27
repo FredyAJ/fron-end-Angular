@@ -1,0 +1,25 @@
+<div class="example-button-row">
+  <button mat-raised-button color="primary" *ngIf="canAdd">Añadir</button>
+</div>
+<table mat-table [dataSource]="data" class="mat-elevation-z0">
+  <ng-container
+    *ngFor="let item of getProparitys(data[0])"
+    matColumnDef="{{ item }}"
+  >
+    <th mat-header-cell *matHeaderCellDef>{{ getItemName(item) }}</th>
+    <td mat-cell *matCellDef="let element">{{ element["" + item + ""] }}</td>
+  </ng-container>
+  <ng-container matColumnDef="actions" *ngIf="canEdit || canDelete">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button *ngIf="canEdit">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button *ngIf="canDelete"  (click)="deleteElementF(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

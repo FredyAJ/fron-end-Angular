@@ -1,19 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BrandComponent } from './modules/brand/brand/brand.component';
-import { OwnerComponent } from './modules/owner/owner/owner.component';
-import { TypeVehicleComponent } from './modules/type-vehicle/type-vehicle/type-vehicle.component';
-import { VehicleComponent } from './modules/vehicle/vehicle/vehicle.component';
 
 const routes: Routes = [
-  { path: 'vehicle', component: VehicleComponent },
-  { path: 'owner', component: OwnerComponent},
-  {path: 'brand', component: BrandComponent},
-  {path: 'typeVehicle', component: TypeVehicleComponent}
+  {
+    path: 'vehicle',
+    loadChildren: () =>
+      import('./module/vehicle/vehicle.module').then((m) => m.VehicleModule),
+  },
+  {
+    path: 'type-vehicle',
+    loadChildren: () =>
+      import('./module/type-vehicle/type-vehicle.module').then(
+        (m) => m.TypeVehicleModule
+      ),
+  },
+  {
+    path: 'owner',
+    loadChildren: () =>
+      import('./module/owner/owner.module').then((m) => m.OwnerModule),
+  },
+  {
+    path: 'brand',
+    loadChildren: () =>
+      import('./module/brand/brand.module').then((m) => m.BrandModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

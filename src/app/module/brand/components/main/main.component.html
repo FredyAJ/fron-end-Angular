@@ -1,0 +1,13 @@
+<div class="formulario">
+<h1> Marcas </h1>
+  <app-table
+    class="table"
+    [data]="sourceBrand.data"
+    [displayedColumns]="sourceBrand.columns"
+    [mapData]="sourceBrand.displayedColumns"
+    [canAdd]="true"
+    [canEdit]="true"
+    [canDelete]="true"
+    (deleteElement)="deleteBrand($event)"
+  ></app-table>
+</div>
