@@ -18,6 +18,10 @@ export class MainComponent {
       ['id', 'Identificion'],
       ['name', 'Nombre'],
     ]),
+    new Map([
+      ['id', 'text'],
+      ['name', 'text'],
+    ]),
     [],
     ['id', 'name']
   );

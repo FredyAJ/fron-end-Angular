@@ -19,5 +19,8 @@ export class VehicleService {
   async deleteVehicle(id: number): Promise<void> {
     await this.http.delete('http://localhost:3000/vehicle/' + id).toPromise();
   }
+  async saveVehicle(vehicle: Vehicle): Promise<void> {
+    await this.http.post('http://localhost:3000/vehicle', vehicle).toPromise();
+  }
 }
 

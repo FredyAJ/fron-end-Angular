@@ -8,6 +8,7 @@ import { OwnerModule } from './module/owner/owner.module';
 import { TypeVehicleModule } from './module/type-vehicle/type-vehicle.module';
 import { VehicleModule } from './module/vehicle/vehicle.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     OwnerModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

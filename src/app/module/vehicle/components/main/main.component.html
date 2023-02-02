@@ -5,9 +5,15 @@
       [data]="sourceVehicle.data"
       [displayedColumns]="sourceVehicle.columns"
       [mapData]="sourceVehicle.displayedColumns"
+      [filedType]="sourceVehicle.filedType"
       [canAdd]="true"
       [canEdit]="true"
       [canDelete]="true"
       (deleteElement)="deleteVehicle($event)"
+      (addElement)="addVehicle($event)"
+      (editElement)="editVehicle($event)"
+      (saveElement)="saveVehicle($event)"
+      [addForm]="addItem"
+      title="Vehiculos"
     ></app-table>
   </div>

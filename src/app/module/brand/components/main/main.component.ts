@@ -12,10 +12,15 @@ import { BrandService } from 'src/app/services/brand/brand.service';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
+  addBrandForm: boolean = false;
   sourceBrand: DataSource<Brand> = new DataSource<Brand>(
     new Map([
       ['id', 'Identificion'],
       ['name', 'Nombre'],
+    ]),
+    new Map([
+      ['id', 'text'],
+      ['name', 'text'],
     ]),
     [],
     ['id', 'name']
@@ -42,5 +47,26 @@ export class MainComponent implements OnInit {
         }
       ),
     });
+  }
+  editBrand(event: Brand) {}
+  saveBrand(event: Brand) {
+    this.brandService
+      .saveBrand(event)
+      .then(() => {
+        this.getBrands();
+      })
+      .catch((error) => {
+        this.dialog.open(DialogComponent, {
+          data: new DialogData(
+            'Error al guardar marca',
+            error.error.message,
+            function () {},
+            function () {}
+          ),
+        });
+      });
+  }
+  addBrand(event: any) {
+    this.addBrandForm = !this.addBrandForm;
   }
 }

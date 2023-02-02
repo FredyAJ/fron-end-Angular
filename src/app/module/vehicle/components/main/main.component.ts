@@ -9,9 +9,10 @@ import { VehicleService } from 'src/app/services/vehicle/vehicle.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit {
+  addItem: boolean = false;
   sourceVehicle: DataSource<Vehicle> = new DataSource<Vehicle>(
     new Map([
       ['id', 'Identificacion'],
@@ -19,17 +20,25 @@ export class MainComponent implements OnInit{
       ['model', 'modelo'],
       ['brand', 'marca'],
       ['color', 'color'],
-
+    ]),
+    new Map([
+      ['id', 'text'],
+      ['name', 'text'],
+      ['model', 'date'],
+      ['brand', 'text'],
+      ['color', 'text'],
     ]),
     [],
-    ['id', 'name']
-
-   );
-   constructor(public dialog: MatDialog, private vehicleService: VehicleService) {}
-   ngOnInit(): void {
-     this.getVehicles();
-   }
-   async getVehicles() {
+    ['id', 'name', 'model', 'brand', 'color']
+  );
+  constructor(
+    public dialog: MatDialog,
+    private vehicleService: VehicleService
+  ) {}
+  ngOnInit(): void {
+    this.getVehicles();
+  }
+  async getVehicles() {
     this.sourceVehicle.data = await this.vehicleService.getVehicles();
   }
   deleteVehicle(event: Vehicle) {
@@ -48,5 +57,27 @@ export class MainComponent implements OnInit{
       ),
     });
   }
+  editVehicle(event: Vehicle) {}
+  saveVehicle(event: Vehicle) {
+    this.vehicleService
+      .saveVehicle(event)
+      .then(() => {
+        this.getVehicles();
+      })
+      .catch((error) => {
+        this.dialog.open(DialogComponent, {
+          data: new DialogData(
+            'Error al guardar marca',
+            error.error.message,
+            function () {},
+            function () {}
+          ),
+        });
+      });
+  }
+  addVehicle(event: any) {
+    console.log(event);
 
+    this.addItem = !this.addItem;
+  }
 }

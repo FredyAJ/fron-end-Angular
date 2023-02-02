@@ -19,4 +19,7 @@ export class BrandService {
   async deleteBrand(id: number): Promise<void> {
     await this.http.delete('http://localhost:3000/brand/' + id).toPromise();
   }
+  async saveBrand(brand: Brand): Promise<void> {
+    await this.http.post('http://localhost:3000/brand', brand).toPromise();
+  }
 }

@@ -1,11 +1,11 @@
 export class Vehicle {
   id: number;
   name: string;
-  model: string;
+  model: Date;
   brand: string;
   color: string;
 
-  constructor(id: number, name: string, model: string, brand: string, color: string) {
+  constructor(id: number, name: string, model: Date, brand: string, color: string) {
     this.id = id;
     this.name = name;
     this.model = model;

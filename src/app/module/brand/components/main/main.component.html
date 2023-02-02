@@ -1,13 +1,20 @@
 <div class="formulario">
-<h1> Marcas </h1>
+  <h1>Marcas</h1>
   <app-table
     class="table"
     [data]="sourceBrand.data"
     [displayedColumns]="sourceBrand.columns"
     [mapData]="sourceBrand.displayedColumns"
+    [filedType]="sourceBrand.filedType"
     [canAdd]="true"
     [canEdit]="true"
     [canDelete]="true"
+    [addForm]="addBrandForm"
     (deleteElement)="deleteBrand($event)"
+    (editElement)="editBrand($event)"
+    (addElement)="addBrand($event)"
+    (saveElement)="saveBrand($event)"
+
+    title="Marcas"
   ></app-table>
 </div>
