@@ -1,1 +1,13 @@
-<p>main works!</p>
+<div class="formulario">
+  <h1> Usuarios </h1>
+    <app-table
+      class="table"
+      [data]="sourceOwner.data"
+      [displayedColumns]="sourceOwner.columns"
+      [mapData]="sourceOwner.displayedColumns"
+      [canAdd]="true"
+      [canEdit]="true"
+      [canDelete]="true"
+      (deleteElement)="deleteOwner($event)"
+    ></app-table>
+  </div>

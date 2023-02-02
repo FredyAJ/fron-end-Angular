@@ -1,1 +1,13 @@
-<p>main works!</p>
+<div class="formulario">
+  <h1> Vehiculos </h1>
+    <app-table
+      class="table"
+      [data]="sourceVehicle.data"
+      [displayedColumns]="sourceVehicle.columns"
+      [mapData]="sourceVehicle.displayedColumns"
+      [canAdd]="true"
+      [canEdit]="true"
+      [canDelete]="true"
+      (deleteElement)="deleteVehicle($event)"
+    ></app-table>
+  </div>
