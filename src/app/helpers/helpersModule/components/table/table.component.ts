@@ -14,6 +14,7 @@ export class TableComponent implements OnInit {
   @Input() filedType: Map<String, String> = new Map();
   @Input() canEdit!: boolean;
   @Input() canDelete!: boolean;
+  //determina si se puede agregar o no dependiendo la vista y los roles que se asignen
   @Input() canAdd: boolean = false;
   @Input() addForm!: boolean;
   @Output() deleteElement = new EventEmitter<any>();
@@ -49,6 +50,9 @@ export class TableComponent implements OnInit {
     this.createFieldData();
     this.addElement.emit();
   }
+
+  //aqui se definen los campos existentes, definimos el fieldata como un mapa aparte en donde buscamos los id
+  //y si no son iguales procedemos a definir un nuevo mapa con el label y el type como valores y les asociamos la key de cada tipo
   createFieldData() {
     this.fieldData = new Map();
     this.getProparitys(this.data[0]).forEach((item) => {

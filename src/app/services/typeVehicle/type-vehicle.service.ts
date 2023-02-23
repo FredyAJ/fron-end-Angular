@@ -9,7 +9,7 @@ export class TypeVehicleService {
   constructor(private http: HttpClient) {}
   async getTypeVehicles(): Promise<TypeVehicle[]> {
     const TypeVehiclePivot: Map<String, any>[] = (await this.http
-      .get('http://localhost:3000/typevehicle')
+      .get('http://localhost:3000/type-vehicle')
       .toPromise()) as Map<String, any>[];
     const Typevehicles: TypeVehicle[] = TypeVehiclePivot.map((TypeVehiclePivot: Map<String, any>) => {
       return TypeVehicle.Create(TypeVehiclePivot);
@@ -17,6 +17,10 @@ export class TypeVehicleService {
     return Typevehicles;
   }
   async deleteTypeVehicle(id: number): Promise<void> {
-    await this.http.delete('http://localhost:3000/typevehicle/' + id).toPromise();
+    await this.http.delete('http://localhost:3000/type-vehicle/' + id).toPromise();
   }
+  async saveTypeVehicle(typeVehicle: TypeVehicle): Promise<void> {
+    await this.http.post('http://localhost:3000/type-vehicle', typeVehicle).toPromise();
+  }
+
 }

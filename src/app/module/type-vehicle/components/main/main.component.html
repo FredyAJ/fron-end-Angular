@@ -1,13 +1,19 @@
 <div class="formulario">
-  <h1> Marcas </h1>
-    <app-table
-      class="table"
-      [data]="sourceTypeVehicle.data"
-      [displayedColumns]="sourceTypeVehicle.columns"
-      [mapData]="sourceTypeVehicle.displayedColumns"
-      [canAdd]="true"
-      [canEdit]="true"
-      [canDelete]="true"
-      (deleteElement)="deletetypeVehicle($event)"
-    ></app-table>
+  <h1> tipos de vehiculos </h1>
+  <app-table
+  class="table"
+  [data]="sourceTypeVehicle.data"
+  [displayedColumns]="sourceTypeVehicle.columns"
+  [mapData]="sourceTypeVehicle.displayedColumns"
+  [filedType]="sourceTypeVehicle.filedType"
+  [canAdd]="true"
+  [canEdit]="true"
+  [canDelete]="true"
+  [addForm]="addTypeVehicleForm"
+  (deleteElement)="deletetypeVehicle($event)"
+  (addElement)="addTypeVehicle($event)"
+  (editElement)="editTypeVehicle($event)"
+  (saveElement)="saveVehicle($event)"
+  title="Tipos de Vehiculos"
+></app-table>
   </div>

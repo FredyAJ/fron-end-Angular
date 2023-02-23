@@ -1,13 +1,20 @@
 <div class="formulario">
   <h1> Usuarios </h1>
-    <app-table
-      class="table"
-      [data]="sourceOwner.data"
-      [displayedColumns]="sourceOwner.columns"
-      [mapData]="sourceOwner.displayedColumns"
-      [canAdd]="true"
-      [canEdit]="true"
-      [canDelete]="true"
-      (deleteElement)="deleteOwner($event)"
-    ></app-table>
+  <app-table
+    class="table"
+    [data]="sourceOwner.data"
+    [displayedColumns]="sourceOwner.columns"
+    [mapData]="sourceOwner.displayedColumns"
+    [filedType]="sourceOwner.filedType"
+    [canAdd]="true"
+    [canEdit]="true"
+    [canDelete]="true"
+    [addForm]="addOwnerForm"
+    (deleteElement)="deleteOwner($event)"
+    (editElement)="editOwner($event)"
+    (addElement)="addOnwer($event)"
+    (saveElement)="saveOnwer($event)"
+
+    title="Usuarios"
+  ></app-table>
   </div>

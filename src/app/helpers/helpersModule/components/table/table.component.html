@@ -1,3 +1,4 @@
+<!--definimos un boton llamado canAdd que nos va a mosyttrar el boton definido mas abajo-->
 <div class="example-button-row" *ngIf="canAdd">
   <div>
     <button
@@ -9,6 +10,10 @@
       Agregar
     </button>
   </div>
+
+  <!--mediante la etiqueta app-form que definimos mediante el componente formulario definimos la manera
+  en la que despliga los datos requeridos, en esta observamos todas las porpiedades que se van a mapear
+en el formulario.-->
   <div *ngIf="addForm">
     <app-form
       [title]="title"
@@ -19,6 +24,9 @@
     ></app-form>
   </div>
 </div>
+<!-- en la parte de abajo se definen todas las propiedades como tal de la tabla que esta actualmente
+con los datos de la base de datos, recirriendo las propiedades en su pósicion 0 y por otro lado
+tenemos los botones y acciones con su respectivo llamado a cada uno de los servicios o funciones-->
 <table mat-table [dataSource]="data" class="mat-elevation-z0">
   <ng-container
     *ngFor="let item of getProparitys(data[0])"

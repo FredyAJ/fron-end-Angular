@@ -1,8 +1,12 @@
 <mat-card>
   <mat-card-header>
+    <!--este Html contiene la caja en donde vamos a tener la agregacion de datos-->
     <mat-card-title>Agregar {{ title }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <!-- en el ngfor recorremos los campos que corresponden a el mapa de mapas, esto para poder definir mas adelante
+    el label y el type, con esto podemos determinar la cantidad de espacios que requerimos dependiendo
+  los datos que hayan en la base de datos-->
     <div *ngFor="let item of fields">
       <mat-form-field class="example-form-field">
         <mat-label>{{ getLabelInput(item) }}</mat-label>

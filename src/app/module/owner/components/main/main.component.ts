@@ -12,6 +12,7 @@ import { DialogData } from 'src/app/helpers/models/dialogData.model';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
+  addOwnerForm: boolean = false;
   sourceOwner: DataSource<Owner> = new DataSource<Owner>(
     new Map([
       ['id', 'Identificacion'],
@@ -30,7 +31,7 @@ export class MainComponent implements OnInit {
 
     ['id', 'nameUser', 'email']
   );
-  constructor(public dialog: MatDialog, private ownerService: OwnerService) {}
+  constructor(public dialog: MatDialog, private ownerService: OwnerService) { }
   ngOnInit(): void {
     this.getOnwers();
   }
@@ -52,5 +53,26 @@ export class MainComponent implements OnInit {
         }
       ),
     });
+  }
+  editOwner(event: Owner) { }
+  saveOnwer(event: Owner) {
+    this.ownerService
+      .saveOwner(event)
+      .then(() => {
+        this.getOnwers();
+      })
+      .catch((error) => {
+        this.dialog.open(DialogComponent, {
+          data: new DialogData(
+            'Error al guardar usuario',
+            error.error.message,
+            function () { },
+            function () { }
+          ),
+        });
+      });
+  }
+  addOnwer(event: any) {
+    this.addOwnerForm = !this.addOwnerForm;
   }
 }

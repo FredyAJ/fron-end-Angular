@@ -19,4 +19,7 @@ export class OwnerService {
   async deleteOwner(id: number): Promise<void> {
     await this.http.delete('http://localhost:3000/owner/' + id).toPromise();
   }
+   async saveOwner(owner: Owner): Promise<void> {
+    await this.http.post('http://localhost:3000/owner', owner).toPromise();
+  }
 }

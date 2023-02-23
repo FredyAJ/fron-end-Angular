@@ -12,7 +12,7 @@ import { VehicleService } from 'src/app/services/vehicle/vehicle.service';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  addItem: boolean = false;
+  addVehicleForm: boolean = false;
   sourceVehicle: DataSource<Vehicle> = new DataSource<Vehicle>(
     new Map([
       ['id', 'Identificacion'],
@@ -78,6 +78,6 @@ export class MainComponent implements OnInit {
   addVehicle(event: any) {
     console.log(event);
 
-    this.addItem = !this.addItem;
+    this.addVehicleForm = !this.addVehicleForm;
   }
 }
